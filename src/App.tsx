@@ -1,12 +1,27 @@
-import React from 'react';
-import './App.css';
+import React from 'react'
+import { connect } from 'react-redux'
+import './styles/App.css'
 
-function App() {
-  return (
-    <div className="App">
-      THUNKABLE
-    </div>
-  );
+import Header from './components/Header'
+import List from './components/List'
+
+interface iApp {
+    listItems: string[]
 }
 
-export default App;
+const App = ({ listItems }: iApp) => {
+    console.log(listItems)
+
+    return (
+        <div className='App'>
+            <Header />
+            <List />
+        </div>
+    )
+}
+
+const mapStateToProps = (state: any) => ({
+  listItems: state.list.items
+})
+
+export default connect(mapStateToProps)(App)
