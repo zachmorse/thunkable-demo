@@ -1,17 +1,16 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { connect } from 'react-redux'
 import './styles/App.css'
 
 import Header from './components/Header'
 import List from './components/List'
+import { AddItem } from './store/actions/list'
 
 interface iApp {
-    listItems: string[]
+    addItem: (item: string) => void
 }
 
-const App = ({ listItems }: iApp) => {
-    console.log(listItems)
-
+const App = ({ addItem }: iApp) => {
     return (
         <div className='App'>
             <Header />
@@ -20,8 +19,8 @@ const App = ({ listItems }: iApp) => {
     )
 }
 
-const mapStateToProps = (state: any) => ({
-  listItems: state.list.items
+const mapDispatchToProps = (dispatch: any) => ({
+    addItem: (item: string) => dispatch(AddItem(item))
 })
 
-export default connect(mapStateToProps)(App)
+export default connect(null, mapDispatchToProps)(App)
