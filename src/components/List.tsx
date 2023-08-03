@@ -1,9 +1,24 @@
 import React from 'react'
+import { connect } from 'react-redux'
 
-const List = () => {
-  return (
-    <div>List</div>
-  )
+interface iProjectList {
+    projects: string[]
 }
 
-export default List
+const List = ({ projects }: iProjectList) => {
+    return (
+        <div>
+            <ul>
+                {projects.map((x, idx) => (
+                    <li key={idx}>{x}</li>
+                ))}
+            </ul>
+        </div>
+    )
+}
+
+const mapStateToProps = (state: any) => ({
+    projects: state.list.items
+})
+
+export default connect(mapStateToProps)(List)
