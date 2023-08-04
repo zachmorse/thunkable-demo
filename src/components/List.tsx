@@ -1,9 +1,14 @@
 import React from 'react'
 import { connect } from 'react-redux'
+import styled from '@emotion/styled'
 import ProjectItem from './ProjectItem'
 
 import { iProjectItem } from '../types'
 
+const ProjectList = styled.div({
+    display: 'flex',
+    flexDirection: 'column',
+})
 interface iProjectList {
     projects: iProjectItem[]
     draftPanelOpen: boolean
@@ -11,7 +16,7 @@ interface iProjectList {
 
 const List = ({ projects, draftPanelOpen }: iProjectList) => {
     return (
-        <div>
+        <ProjectList>
             {draftPanelOpen ? <ProjectItem isDraft /> : null}
             {projects.length ? (
                 <>
@@ -20,7 +25,7 @@ const List = ({ projects, draftPanelOpen }: iProjectList) => {
                     ))}
                 </>
             ) : null}
-        </div>
+        </ProjectList>
     )
 }
 
