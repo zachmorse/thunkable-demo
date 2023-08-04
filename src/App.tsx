@@ -22,8 +22,8 @@ const App = ({ projectStagedForDelete, declineProjectDelete, deleteProject }: iA
             <List />
             <ConfirmationDialog
                 open={projectStagedForDelete !== null}
-                primaryAction={() => deleteProject()}
-                secondaryAction={() => declineProjectDelete()}
+                primaryAction={deleteProject}
+                secondaryAction={declineProjectDelete}
             />
         </div>
     )
