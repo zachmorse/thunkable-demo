@@ -1,6 +1,8 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import styled from '@emotion/styled'
+import { TextField } from '@mui/material'
+
 import {
     addProject,
     updateProjectDraft,
@@ -8,7 +10,8 @@ import {
     updateProject,
     initializeProjectDelete
 } from '../store/actions/list'
-import { TextField } from '@mui/material'
+
+import { formatUnixTimestamp } from '../utils'
 
 import Beaver from '../assets/ThunkableBeaver.png'
 
@@ -113,7 +116,7 @@ const ProjectItem = ({
                         <div>{item.title}</div>
                     )}
                     <button onClick={() => initializeProjectUpdate(item.id)}>Icon Update</button>
-                    <div>{item.created}</div>
+                    <div>{formatUnixTimestamp(item.created)}</div>
                     <button onClick={() => initializeProjectDelete(item.id)}>Icon Delete</button>
                 </>
             )}
