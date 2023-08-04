@@ -1,27 +1,41 @@
 import React from 'react'
 import { connect } from 'react-redux'
+
 import './styles/App.css'
 
 import Header from './components/Header'
 import List from './components/List'
+import ConfirmationDialog from './components/ConfirmationDialog'
+
+import { declineProjectDelete, deleteProject } from './store/actions/list'
 
 interface iApp {
-    listItems: string[]
+    projectStagedForDelete: number | null
+    declineProjectDelete: () => void
+    deleteProject: () => void
 }
 
-const App = ({ listItems }: iApp) => {
-    console.log(listItems)
-
+const App = ({ projectStagedForDelete, declineProjectDelete, deleteProject }: iApp) => {
     return (
         <div className='App'>
             <Header />
             <List />
+            <ConfirmationDialog
+                open={projectStagedForDelete !== null}
+                primaryAction={deleteProject}
+                secondaryAction={declineProjectDelete}
+            />
         </div>
     )
 }
 
 const mapStateToProps = (state: any) => ({
-  listItems: state.list.items
+    projectStagedForDelete: state.list.projectStagedForDelete
 })
 
-export default connect(mapStateToProps)(App)
+const mapDispatchToProps = (dispatch: any) => ({
+    declineProjectDelete: () => dispatch(declineProjectDelete()),
+    deleteProject: () => dispatch(deleteProject())
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(App)
