@@ -35,6 +35,12 @@ const ProjectContainer = styled.div({
     borderBottom: 'none',
     '&:last-child': {
         border: '1px solid rgba(0,0,0,0.1)'
+    },
+
+    '@media (max-width: 872px)': {
+        width: 'calc(90% - 2rem)',
+        margin: 'auto',
+        padding: '0rem 1rem'
     }
 })
 
@@ -169,13 +175,15 @@ const ProjectItem = ({
                         <span>{item.title}</span>
                     </ProjectTitle>
                 )}
-                <EditIconContainer>
-                    <CustomIconButton
-                        clickAction={() => initializeProjectUpdate(item.id)}
-                        primaryIcon={editIcon}
-                        altIcon={editIconHover}
-                    />
-                </EditIconContainer>
+                {!isDraft ? (
+                    <EditIconContainer>
+                        <CustomIconButton
+                            clickAction={() => initializeProjectUpdate(item.id)}
+                            primaryIcon={editIcon}
+                            altIcon={editIconHover}
+                        />
+                    </EditIconContainer>
+                ) : null}
             </LeftContainer>
             <RightContainer>
                 {!isDraft && (

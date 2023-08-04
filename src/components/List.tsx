@@ -9,6 +9,7 @@ const ProjectList = styled.div({
     display: 'flex',
     flexDirection: 'column',
 })
+
 interface iProjectList {
     projects: iProjectItem[]
     draftPanelOpen: boolean
