@@ -1,13 +1,18 @@
-import { ADD_ITEM } from '../actions/actionTypes'
+import { ADD_PROJECT, CREATE_PROJECT_DRAFT } from '../actions/actionTypes'
 
 const initialState = {
-    items: ['stuff', 'things']
+    projects: [],
+    draftPanelOpen: false,
+    draftItem: ''
 }
 
 const listReducer = (state = initialState, action: any) => {
     switch (action.type) {
-        case ADD_ITEM:
-            return { ...state, items: [...state.items, action.payload] }
+        case CREATE_PROJECT_DRAFT:
+            return { ...state, draftPanelOpen: true }
+        case ADD_PROJECT:
+            return { ...state, projects: [...state.projects, action.payload], draftPanelOpen: false }
+
         default:
             return state
     }

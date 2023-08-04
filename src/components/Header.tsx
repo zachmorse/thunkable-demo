@@ -1,8 +1,11 @@
 import React from 'react'
+import { connect } from 'react-redux'
 import styled from '@emotion/styled'
 
 import Beaver from '../assets/ThunkableBeaver.png'
 import PlusSign from '../assets/plus_sign.svg'
+
+import { createProjectDraft } from '../store/actions/list'
 
 const Banner = styled.div({
     backgroundColor: '#F7F9FD',
@@ -30,16 +33,30 @@ const AppTitle = styled.div({
     gridRow: 2
 })
 
-const Header = () => {
+const NewProjectButton = styled.button({
+    gridRow: 2,
+    gridColumn: 2,
+    width: 'fit-content'
+})
+
+interface iHeader {
+    createProjectDraft: () => void
+}
+
+const Header = ({ createProjectDraft }: iHeader) => {
     return (
         <Banner>
             <LogoContainer>
-                {/* <img src={Beaver} /> */}
-                <img src={PlusSign} />
+                <img src={Beaver} />
             </LogoContainer>
+            <NewProjectButton onClick={createProjectDraft}>add new project</NewProjectButton>
             <AppTitle>My Projects</AppTitle>
         </Banner>
     )
 }
 
-export default Header
+const mapDispatchToProps = (dispatch: any) => ({
+    createProjectDraft: () => dispatch(createProjectDraft())
+})
+
+export default connect(null, mapDispatchToProps)(Header)
