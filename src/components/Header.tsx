@@ -1,10 +1,9 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import styled from '@emotion/styled'
-import { Button, Fab } from '@mui/material'
+import { Fab } from '@mui/material'
 
 import Beaver from '../assets/ThunkableBeaver.png'
-// import PlusSign from '../assets/plus_sign.svg'
 import PlusSign from '../assets/PlusSign'
 
 import { createProjectDraft } from '../store/actions/list'
@@ -14,7 +13,7 @@ const Banner = styled.div({
     fontSize: '1rem',
     color: '#424242',
     margin: '0rem auto 2rem',
-    width: '85%',
+    width: '872px',
     textTransform: 'uppercase',
     height: '7.75rem',
     display: 'grid',
@@ -23,7 +22,16 @@ const Banner = styled.div({
     marginBottom: '3rem',
     borderBottom: '1px solid rgba(0,0,0,0.1)',
     boxSizing: 'border-box',
-    padding: '0rem 0.5rem'
+    padding: '0rem 0.5rem',
+    transition: 'all 125ms',
+
+    '@media (max-width: 872px)': {
+        maxWidth: '100%',
+        margin: '0rem',
+        marginBottom: '3rem',
+        width: '100%',
+        paddingLeft: '1.25rem'
+    }
 })
 
 const LogoContainer = styled.div({
@@ -68,7 +76,7 @@ const Header = ({ createProjectDraft }: iHeader) => {
     return (
         <Banner>
             <LogoContainer>
-                <img src={Beaver} />
+                <img alt='beaver' src={Beaver} />
             </LogoContainer>
             <ButtonContainer>
                 <span>
