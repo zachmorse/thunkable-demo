@@ -2,8 +2,10 @@ import React from 'react'
 import { connect } from 'react-redux'
 import ProjectItem from './ProjectItem'
 
+import { iProjectItem } from '../types'
+
 interface iProjectList {
-    projects: string[]
+    projects: iProjectItem[]
     draftPanelOpen: boolean
 }
 
@@ -12,11 +14,11 @@ const List = ({ projects, draftPanelOpen }: iProjectList) => {
         <div>
             {draftPanelOpen ? <ProjectItem isDraft /> : null}
             {projects.length ? (
-                <ul>
+                <>
                     {projects.map((x, idx) => (
-                        <li key={idx}>{x}</li>
+                        <ProjectItem key={idx} item={x} />
                     ))}
-                </ul>
+                </>
             ) : null}
         </div>
     )

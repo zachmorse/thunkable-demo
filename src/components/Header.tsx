@@ -12,12 +12,12 @@ const Banner = styled.div({
     fontSize: '1rem',
     color: '#424242',
     width: '100%',
-    padding: '0rem 2rem 1rem 89px',
     textTransform: 'uppercase',
     height: '7.75rem',
     display: 'grid',
     gridTemplateColumns: '1fr 1fr',
-    gridTemplateRows: '1fr 1fr'
+    gridTemplateRows: '1fr 1fr',
+    marginBottom: '2rem'
 })
 
 const LogoContainer = styled.div({
@@ -50,6 +50,7 @@ const Header = ({ createProjectDraft }: iHeader) => {
                 <img src={Beaver} />
             </LogoContainer>
             <NewProjectButton onClick={createProjectDraft}>add new project</NewProjectButton>
+            {/* ZCM: replace this obviously ^^^ */}
             <AppTitle>My Projects</AppTitle>
         </Banner>
     )
