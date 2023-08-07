@@ -15,7 +15,7 @@ const initialState = {
     projects: [] as any,
     draftPanelOpen: false,
     draftItem: '',
-    newProjectId: 1,
+    newProjectId: 0,
     projectStagedForUpdate: null,
     projectStagedForDelete: null
 }
